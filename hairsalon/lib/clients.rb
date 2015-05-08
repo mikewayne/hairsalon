@@ -21,7 +21,7 @@ class Clients
     result = DB.exec("SELECT * FROM clients WHERE id = #{client_id};")
     name = result.first.fetch("name")
     id = result.first.fetch("id").to_i
-    Clients.new({:name => 'Hayden', :id => id})
+    Clients.new({:name => name, :id => id})
   end
 
   def update(attributes)
