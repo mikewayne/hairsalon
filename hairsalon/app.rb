@@ -41,23 +41,23 @@ patch('/clients/:id') do
   redirect('/stylist')
 end
 
-delete('/clients/:id') do
-  client = Clients.find(params.fetch("id").to_i)
-  client.delete()
-  redirect('/stylist')
-end
+#delete('/clients/:id') do
+#  client = Clients.find(params.fetch("id").to_i)
+#  client.delete()
+#  redirect('/stylist')
+#end
 
-post('/clients/:id') do
-  stylist = Stylists.find(params.fetch("stylist_id").to_i)
-  client = Clients.find(params.fetch("id").to_i)
-  redirect("/stylist/clients/#{client.id}")
-end
+#post('/clients/:id') do
+#  stylist = Stylists.find(params.fetch("stylist_id").to_i)
+#  client = Clients.find(params.fetch("id").to_i)
+#  redirect("/stylist/clients/#{client.id}")
+#end
 
-get('/clients/:id/edit') do
-  @id = params.fetch('id').to_i
-  @stylists = Stylists.all()
-  erb(:client_edit)
-end
+#get('/clients/:id/edit') do
+#  @id = params.fetch('id').to_i
+#  @stylists = Stylists.all()
+#  erb(:client_edit)
+#end
 
 get('/stylists/new') do
   erb(:stylist_form)
@@ -75,30 +75,28 @@ get('/:user/stylists/:id') do
   @user = params.fetch("user")
 end
 
-get('/stylists/:id/edit') do
-  @id = params.fetch('id').to_i
-  @clients = Clients.all()
-  erb(:stylist_edit)
-end
+#get('/stylists/:id/edit') do
+#  @id = params.fetch('id').to_i
+#  @clients = Clients.all()
+#  erb(:stylist_edit)
+#end
 
-patch('/stylists/:id') do
-  @stylist = Stylists.find(params.fetch("id").to_i)
-  new_name = params.fetch("new_name")
-  @city.update({:name => new_name})
-  redirect('/stylist')
-end
+#patch('/stylists/:id') do
+#  @stylist = Stylists.find(params.fetch("id").to_i)
+#  new_name = params.fetch("new_name")
+#  @city.update({:name => new_name})
+#end
 
 delete('/stylists/:id') do
   stylist = Stylists.find(params.fetch("id").to_i)
   stylist.delete()
-  redirect('/stylist')
 end
 
-post('/stylists/:id') do
-  client = Clients.find(params.fetch("client_id").to_i)
-  stylist = Stylists.find(params.fetch("id").to_i)
-  redirect("/stylist/stylists/#{stylist.id}")
-end
+#post('/stylists/:id') do
+#  client = Clients.find(params.fetch("client_id").to_i)
+#  stylist = Stylists.find(params.fetch("id").to_i)
+#  redirect("/stylist/stylists/#{stylist.id}")
+#end
 
 get('/clients_stylists/all') do
   @stylists = Stylists.all
@@ -119,6 +117,7 @@ get('/stylists') do
 end
 
 get('/clients') do
+end
 
 get('/stylist') do
   erb(:stylist)
