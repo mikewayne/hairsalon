@@ -11,6 +11,7 @@ get('/') do
   erb(:index)
 end
 
+
 get('/:user') do
   @clients = Clients.all()
   @stylists = Stylists.all()
@@ -118,6 +119,12 @@ get('/stylists') do
 end
 
 get('/clients') do
+
+get('/stylist') do
+  erb(:stylist)
+end
+
+get('/client') do
   erb(:client)
 end
 
