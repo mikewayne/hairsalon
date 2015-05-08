@@ -1,0 +1,32 @@
+<h2>Change the stylist name: </h2>
+<form action = "/cities/<%= @id %>"  method = "post">
+  <input name = "_method" type = "hidden" value="patch">
+  <div class = "form-group">
+    <label for ="new_name">New Name: </label>
+    <input type = "text" id = "new_name" name = "new_name" class = "form-control">
+  </div>
+  <button type = "submit" id = "submit" class = "btn btn-success">Change name</button>
+</form>
+
+<h2>Delete this stylist:</h2>
+<form action = "/stylists/<%= @id %>" method = "post">
+  <input name = "_method" type = "hidden" value = "delete">
+  <button type = "submit" id = "submit" class = "btn btn-danger">Delete</button>
+</form>
+
+<% if @clients.any? %>
+ <h2>Add a client for this stylist:</h2>
+ <form action = "/stylists/<%= @id %>" method = "post">
+    <div class = "form-group">
+      <label for = "new_client">New Client Name:</label>
+      <input type = "text" id = "new_client" name = "new_client" class = "form-control">
+
+    <% @clients.each() do |client| %>
+      <div class = "checkbox">
+        <input type = "checkbox" id = "<%= client.id %>" name = "client_id" value = "<%= client.id %>"><%= client.id %>
+      </div>
+    <% end %>
+
+    <button type = "submit" id = "submit" class = "btn btn-info">Add client</button>
+  </form>
+<% end %>
