@@ -30,7 +30,7 @@ class Stylists
   end
 
   def update(attributes)
-    @line = attributes.fetch(:name)
+    @name = attributes.fetch(:name)
     DB.exec("UPDATE stylists SET name = '#{@name}' WHERE id = #{@id};")
   end
 
